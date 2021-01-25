@@ -27,7 +27,9 @@ func TestHelloWorldBudiman(t *testing.T) {
 		// unit test failed and test error
 		//panic("Result is not 'Hello Budiman'") // ini akan panic dan terjadi error
 		// menggunakan func Fail()
-		t.Fail()
+		//t.Fail()
+		// menggunakan func Error()
+		t.Error("Result must be 'Hello Budiman'")
 	}
 	// kode program ini akan tetap dieksekusi karena menggunakan func t.Fail()
 	fmt.Println("TestHelloWorldBudiman Done")
@@ -42,8 +44,15 @@ func TestHelloWorldRasyid(t *testing.T) {
 		// unit test failed and test error
 		//panic("Result is not 'Hello Rasyid'") // ini akan panic dan terjadi error
 		// menggunakan func FailNow()
-		t.FailNow()
+		//t.FailNow()
+		// menggunakan func Error()
+		t.Fatal("Result must be 'Hello Rasyid'")
 	}
 	// kode program ini tidak akan dieksekusi karena menggunakan func t.FailNow()
 	fmt.Println("TestHelloWorldRasyid Done")
 }
+
+/**
+Lebih disarankan menggunakan Error() ataupun Fatal() dibandingkan dengan Fail() dan
+FailNow() kenapa karena kita bisa menambahkan informasi kenapa unit test kita gagal
+ */
