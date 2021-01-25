@@ -1,6 +1,9 @@
 package helper
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestHelloWorld(t *testing.T) {
 	result := HelloWorld("World") // menjalankan function HelloWorld dan disimpan pada var result
@@ -9,8 +12,10 @@ func TestHelloWorld(t *testing.T) {
 	if result != "Hello World" { // ini akan dicek
 		// apabila result tidak sama dengan Hello World
 		// unit test failed and test error
-		panic("Result is not 'Hello World'") // ini akan panic dan terjadi error
+		// panic("Result is not 'Hello World'") // ini akan panic dan terjadi error
+
 	}
+	fmt.Println("TestHelloWorld Done")
 }
 
 func TestHelloWorldBudiman(t *testing.T) {
@@ -20,8 +25,12 @@ func TestHelloWorldBudiman(t *testing.T) {
 	if result != "Hello Budiman" { // ini akan dicek
 		// apabila result tidak sama dengan Hello Budiman
 		// unit test failed and test error
-		panic("Result is not 'Hello Budiman'") // ini akan panic dan terjadi error
+		//panic("Result is not 'Hello Budiman'") // ini akan panic dan terjadi error
+		// menggunakan func Fail()
+		t.Fail()
 	}
+	// kode program ini akan tetap dieksekusi karena menggunakan func t.Fail()
+	fmt.Println("TestHelloWorldBudiman Done")
 }
 
 func TestHelloWorldRasyid(t *testing.T) {
@@ -31,6 +40,10 @@ func TestHelloWorldRasyid(t *testing.T) {
 	if result != "Hello Rasyid" { // ini akan dicek
 		// apabila result tidak sama dengan Hello Budiman
 		// unit test failed and test error
-		panic("Result is not 'Hello Rasyid'") // ini akan panic dan terjadi error
+		//panic("Result is not 'Hello Rasyid'") // ini akan panic dan terjadi error
+		// menggunakan func FailNow()
+		t.FailNow()
 	}
+	// kode program ini tidak akan dieksekusi karena menggunakan func t.FailNow()
+	fmt.Println("TestHelloWorldRasyid Done")
 }
