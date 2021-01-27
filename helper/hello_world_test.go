@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
+	"runtime"
 	"testing"
 )
 
@@ -57,7 +58,7 @@ func TestHelloWorldRasyid(t *testing.T) {
 /**
 Lebih disarankan menggunakan Error() ataupun Fatal() dibandingkan dengan Fail() dan
 FailNow() kenapa karena kita bisa menambahkan informasi kenapa unit test kita gagal
- */
+*/
 
 // Belajar Assertion (dengan menggunakan library testify)
 /**
@@ -68,7 +69,7 @@ Fail(), artinya eksekusi unit test akan tetap dilanjutkan
 3. Sedangkan jika kita menggunakan require, jika pengecekkan gagal, maka require akan
 memanggil FailNow(), artinya eksekusi unit test tidak akan dilanjutkan
 */
-func TestHelloWorldAssertion (t *testing.T) {
+func TestHelloWorldAssertion(t *testing.T) {
 	result := HelloWorld("Budiman")
 	// Parameter Equal berisikan testing, expected, actual, msgAndArgs
 	// testing itu t
@@ -90,4 +91,17 @@ func TestHelloWorldRequire(t *testing.T) {
 	// Kenapa? karena require itu memanggil FailNow()
 	fmt.Println("TestHelloWorld with Require is Done")
 }
+
 // NOTE: Jadi jangan pakai if else lagi, lebih baik pakai library assertion saja
+
+// Skip Test
+func TestSkip(t *testing.T) {
+	// kondisi dimana terdapat keadaan tertentu maka
+	if runtime.GOOS == "linux" { // apabila os yang digunakan adalah linux
+		// kita perlu skip
+		t.Skip("Can't run on Linux") // maka tidak bisa berjalan di os linux
+	}
+	// apabila os selain linux, maka menjalankan perintah di bawah ini
+	result := HelloWorld("Budiman")
+	require.Equal(t, "Hello Budiman", result, "Result must be 'Hello Budiman'")
+}
