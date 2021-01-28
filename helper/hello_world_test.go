@@ -105,3 +105,15 @@ func TestSkip(t *testing.T) {
 	result := HelloWorld("Budiman")
 	require.Equal(t, "Hello Budiman", result, "Result must be 'Hello Budiman'")
 }
+
+//TestMain
+// NOTE: Ingat ini hanya berjalan pada 1 package saja, di package lain harus buat lagi TestMain
+func TestMain(m *testing.M) {
+	// before
+	fmt.Println("BEFORE UNIT TEST")
+
+	m.Run() // eksekusi semua unit test
+
+	// after
+	fmt.Println("AFTER UNIT TEST")
+}
