@@ -117,3 +117,21 @@ func TestMain(m *testing.M) {
 	// after
 	fmt.Println("AFTER UNIT TEST")
 }
+
+//Sub Test
+func TestSubTest(t *testing.T) {
+	// jadi di sini ada 2 sub test
+	// Sub Test Pertama
+	t.Run("Budiman", func(t *testing.T) {
+		// sub test ini akan melakukan kode program dengan function lain
+		result := HelloWorld("Budiman")
+		require.Equal(t, "Hello Budiman", result, "Result must be 'Hello Budiman'")
+	})
+
+	// Sub Test Kedua
+	t.Run("Rasyid", func(t *testing.T) {
+		// sub test ini akan melakukan kode program dengan function lain
+		result := HelloWorld("Rasyid")
+		require.Equal(t, "Hello Rasyid", result, "Result must be 'Hello Rasyid'")
+	})
+}
