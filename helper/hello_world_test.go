@@ -135,3 +135,45 @@ func TestSubTest(t *testing.T) {
 		require.Equal(t, "Hello Rasyid", result, "Result must be 'Hello Rasyid'")
 	})
 }
+
+// Table Test
+func TestTableHelloWorld(t *testing.T) {
+	tests := []struct { // slice struct
+		name     string
+		request  string
+		expected string
+	}{
+		// ini data data yang akan digunakan
+		{
+			name:     "HelloWorld(Budiman Rasyid)",
+			request:  "Budiman Rasyid",
+			expected: "Hello Budiman Rasyid",
+		},
+		{
+			name:     "HelloWorld(Zainuddin)",
+			request:  "Zainuddin",
+			expected: "Hello Zainuddin",
+		},
+		{
+			name:     "HelloWorld(Nuratitin)",
+			request:  "Nuratitin",
+			expected: "Hello Nuratitin",
+		},
+		{
+			name:     "HelloWorld(Subhan Amin)",
+			request:  "Subhan Amin",
+			expected: "Hello Subhan Amin",
+		},
+		// di sini kalau ingin menambahkan datanya sama seperti data di atas
+	}
+
+	// Melakukan Iterasi
+	for _, test := range tests {
+		// memanggil function sub test
+		t.Run(test.name, func(t *testing.T) {
+			// parameter didapatkan dari slice
+			result := HelloWorld(test.request)
+			require.Equal(t, test.expected, result)
+		})
+	}
+}
