@@ -177,3 +177,31 @@ func TestTableHelloWorld(t *testing.T) {
 		})
 	}
 }
+
+// Kode: Membuat Benchmark Function
+/**
+Menjalankan Benchmark
+1. Untuk menjalankan seluruh benchmark di module/package, kita bisa menggunakan
+perintah sama seperti test, namun ditambahkan parameter bench:
+go test -v -bench=.
+2. Jika kita hanya ingin menjalankan benchmark tanpa unit test, kita bisa gunakan
+perintah:
+go test -v -run=NotMatchUnitTest -bench=.
+3. Kode diatas selain menjalankan benchmark, akan menjalankan unit test juga, jika
+kita hanya ingin menjalankan benchmark tertentu, kita bisa gunakan perintah:
+go test -v -run=NotMatchUnitTest -bench=BenchmarkTest
+4. Jika kita menjalankan benchmark di root module/package dan ingin semua module/
+package dijalankan, kita bisa gunakan perintah:
+go test -v -bench=. ./...
+*/
+func BenchmarkHelloWorld(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("World")
+	}
+}
+
+func BenchmarkHelloWorldRasyid(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		HelloWorld("Rasyid")
+	}
+}
